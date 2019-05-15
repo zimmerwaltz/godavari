@@ -1,0 +1,62 @@
+html{
+//    text-rendering: geometricPrecision;
+    font-smoothing: antialiased;
+}
+
+@media (max-width: 575px) {
+    html,body{
+        font-size: 0.7em;
+    }
+    #menu-open,#menu-close{
+        font-size: 1.5rem;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { 
+    html,body{
+        font-size: 0.8em;
+    }
+    #menu-open,#menu-close{
+        font-size: 1.5rem;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+    html,body{
+            font-size: 0.875em;
+        }
+    #menu-open,#menu-close{
+        font-size: 1.2rem;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {  
+    html,body{
+        font-size: 1em;
+    }
+    #menu-open,#menu-close{
+        font-size: 1rem;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {  
+    
+}
+
+
+footer .container .row div[class*=col-]{
+    min-height: 0;
+}
+
+.font-regular{
+    font-weight: 400;
+}
+
+.font-medium{
+    font-weight: 500;
+}
+

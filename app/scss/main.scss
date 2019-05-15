@@ -1,0 +1,459 @@
+//main.scss file
+@import 'variables';
+@import 'reset';
+@import 'mixins';
+@import "../fontawesome/scss/fontawesome.scss";
+@import "../fontawesome/scss/brands.scss";
+@import "../fontawesome/scss/solid.scss";
+
+//@import 'reset';
+
+@keyframes spin{
+    0{
+        transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+}
+
+body{
+    background: #00e7c8;
+    font-family: $font;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.preloader{
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    .strips{
+        height: 100%;
+        width: inherit;
+        display: block;
+        position: relative;
+        background: white;
+        transition: 1s all ease-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0;
+    }
+    .spinner{
+        height: 45px;
+        width: 45px;
+        display: block;
+        border:4px solid transparent;
+        border-top:5px solid $lightGreen;
+        border-radius:22.5px;
+        animation: spin 1s linear infinite;
+    }
+}
+
+
+.strips-slide-out{
+    transform: translateY(100%);
+    opacity: 0.2;
+}
+
+.error-message{
+    color:red;
+}
+
+#menu-open{
+    position: fixed;
+    z-index: 999;
+    background-color: rgba(255,255,255,0.6);
+//    border:2px solid whitesmoke;
+    color: #333;
+    @include menu-button;
+}
+
+#menu-close{
+    position: absolute;
+    z-index: 999;
+    background-color: whitesmoke;
+//    border:2px solid $red;
+    color: $red;
+    @include menu-button;
+}
+
+
+#main-menu{
+    background: linear-gradient(45deg, rgba(255,255,255,0.95) 0%,rgba(255,255,255,1) 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index:1000;
+    position: fixed;
+    width: 100%;
+    transform: translateY(-100%);
+    transition: 0.2s all;
+    ul{
+        padding: 0;
+        li{
+            list-style: none;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+            a{
+                @include link-styling($primary);
+            }
+        }
+    }
+}
+
+
+//** slider css starts **//
+#main-slider{
+    min-height: 100vh;
+    .carousel-indicators{
+        right: auto;
+        bottom:17%;
+        left:-30px;
+        li{
+            background-color: rgba(255,255,255,.3);
+            height: 15px;
+            width: 15px;
+            transition: 0.2s all;
+            margin: 0 0.5rem;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+        .active{
+            background-color: $primary;
+            transform: scale(1.4);
+        }
+
+    }
+    .carousel-inner{
+        .carousel-item{
+            min-height: 100vh;
+            background:{
+                repeat: no-repeat;
+                size: cover;
+            }
+            .carousel-caption{
+                bottom:20%;
+                text-align: left;
+                left:13%;
+                right: 13%;
+                .title{
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    animation-delay: 0.5s;
+                    }
+                .subtitle{
+                    font-weight: 500;
+                    animation-delay: 1s;
+                }
+            }
+            &::after{
+                content: "";
+                display: block; 
+                width: inherit;
+                height: 100vh;
+                position: absolute;
+                top: 0;
+                background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,0.8) 100%);
+            }
+            &:nth-child(1){
+                background-image: url('../images/slider-1.jpg');
+            }
+            &:nth-child(2){
+                background-image: url('../images/slider-2.jpg');
+            }
+            &:nth-child(3){
+                background-image: url('../images/slider-3.jpg');
+            }
+        }
+        
+    }
+}
+//** slider starts **//
+
+
+//** video starts **//
+
+#video{
+    background: white{
+        image: url(../images/yellow_circle.png), url(../images/purple_circle.png);
+        position: top left, center bottom;
+        repeat: no-repeat;
+        
+    }
+    .image-holder{
+        padding:0;
+        &::before{
+            cursor:pointer;
+            content: "\f04b";
+            font-weight:900;
+            display:block;
+            position:absolute;
+            top:50%;
+            left:50%;
+            color:$primary;
+            font-family:$fontAwesome;
+            font-size:3rem;
+            margin-left: -1rem;
+            margin-top: -2rem; 
+            transition:all 0.2s;
+        }
+        &:hover::before{
+            transform:scale(1.1);
+            color:darken($primary,10%);
+        } 
+    }
+    .desktop{
+        .image-holder{
+            background-image: url('../images/video_image.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 572px;
+            background-position: center left; 
+        }
+        .text-content{
+            max-width:420px;
+            margin:0 auto;
+        }
+    }    
+    
+    .mobile{
+        padding:2rem 0;
+        .container-fluid{
+            margin:0;
+            .text-content{
+                margin-bottom: 2rem;
+            }
+        }
+    }    
+}
+
+//** video ends **//
+
+
+//** market units starts **//
+#market-units{
+    background-color: white;
+}
+.field-card{
+    @include field-card;
+    background-size: cover;   
+        .content{
+            z-index: 999;
+            .title{
+                @include mu-title;
+            }
+            .underline{
+                @include underline;
+            }
+        }
+
+    &:hover .underline{
+        transform: translateX(0);
+        opacity: 1;
+    }
+    &:hover .title{
+        transform: translateX(0);
+        opacity: 1;
+    }
+    .field-card-child{
+        @include field-card-child;
+    }
+    .food-retail{
+        background-image:url('../images/mu_food_retail.jpg');
+        &::after{
+            @include field-card-overlay($from:rgba($lightGreen,$fromOpacity) 0%, $to:rgba($lightGreen,$toOpacity) 50%);
+        } 
+    }
+    .bio-fertilizers{
+        background-image:url('../images/mu_bio_fertilizers.jpg');
+        &::after{
+            @include field-card-overlay($from:rgba($orange,$fromOpacity) 0%, $to:rgba($orange,$toOpacity) 50%);
+        } 
+    }
+    .products{
+        background-image:url('../images/mu_products.jpg');
+        &::after{
+            @include field-card-overlay($from:rgba($pink,$fromOpacity) 0%, $to:rgba($pink,$toOpacity) 50%);
+        } 
+    }
+    .markets{
+        background-image:url('../images/mu_markets.jpg');
+        &::after{
+            @include field-card-overlay($from:rgba($electricBlue,$fromOpacity) 0%, $to:rgba($electricBlue,$toOpacity) 50%);
+        } 
+    }
+    .research{
+        background-image:url('../images/mu_research.jpg');
+        &::after{
+            @include field-card-overlay($from:rgba($red,$fromOpacity) 0%, $to:rgba($red,$toOpacity) 50%);
+        } 
+    }
+    .community{
+        background-image:url('../images/mu_community.jpg');
+        &::after{
+            @include field-card-overlay($from:rgba($purple,$fromOpacity) 0%, $to:rgba($purple,$toOpacity) 50%);
+        } 
+    }
+    .farmer{
+        background-image:url('../images/mu_farmer.jpg');
+        &::after{
+            @include field-card-overlay($from:rgba($darkGreen,$fromOpacity) 0%, $to:rgba($darkGreen,$toOpacity) 50%);
+        } 
+    }
+}//field card
+
+//** market units ends **//
+    
+    
+//**contact us section starts **//
+
+#contact-us{
+    background-image: url(../images/contact_bg.png);
+    background-size: contain;
+    background-attachment: fixed;
+    .content{
+        padding:2rem 0; 
+//        margin:0 4rem;
+        text-align: center;
+        vertical-align: middle;
+        p{
+            padding:1rem 0;
+            color:$darkBlue;
+            line-height: 3rem;
+            font-weight: 400;
+        }
+        button{
+            @include button($primary);
+            box-shadow: 0px 5px 10px rgba(159, 194, 68, .25);
+        }
+    }
+}
+
+
+  #contactform  .btn{
+        @include button($primary);
+        box-shadow: 0px 5px 10px rgba(159, 194, 68, .25);
+    }
+
+//**contact us section ends **//
+
+
+footer{
+    background-color:$darkBlue;
+    padding: 0 1rem;
+    .social-icons{
+        display: flex;
+        justify-content:space-around;
+        .fab{
+            color:$primary;
+            font-size: 1.5rem;
+            padding: 0 0.5rem;
+            &:hover{
+                color:darken($primary,10%);
+            }
+        }
+    }
+    .title{
+        color:lighten($darkBlue,25%);
+        text-transform: uppercase;
+        margin: 0 0 1rem; 
+            a{
+                @include link-styling($primary)
+            }
+    }
+    .section{
+        padding:2rem 1rem;
+        line-height: 1.5rem;
+        .subsection{
+            margin-bottom: 1rem;
+            .subtitle{
+                color:#e4e4e4;
+                font-weight: 600;
+                font-size: 0.75rem; 
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+            }
+            a{
+                color: #f8f8f8;
+                display: block;
+                font-weight: 300;
+                font-size: 0.75rem; 
+            }
+        }
+    }
+}
+
+//mobile screens
+@media (max-width:767px){
+    
+    section .field-card .content .title,section .field-card .content .underline{
+        transform: translateX(0);
+        opacity: 1;
+    }
+    
+    section .field-card-child::after{
+        transform: translateX(0) !important;
+    }
+    
+    
+    footer{
+        padding: 2rem 1rem;
+        text-align: center;
+        position: static;
+        .section{
+            padding:0rem;
+            .title{
+                cursor: pointer;
+                padding: 0 0 0.5rem;
+                @include link-styling($primary);
+                display: inline-block;
+                margin: 1.5rem;
+            }
+            .subsection{
+                transition:0.2s all;
+                padding-bottom: 0.5rem;
+            }
+        }
+        
+    }
+}//media query ends
+
+//tab
+@media (min-width:768px){
+    
+    //changing as per footer height 
+    .main-wrapper{
+        position: relative;
+        z-index: 998;
+        margin-bottom: 322px;
+    }
+    
+    
+    footer{
+        position: fixed;
+        bottom: 0;
+        width:100%;
+        .section{
+            .subsection{
+                display: block;
+            }
+        }
+    }
+}
+
+//desktop
+@media (min-width:992px){
+    //changing as per footer height 
+    .main-wrapper{
+        margin-bottom: 344px;
+    }
+
+}

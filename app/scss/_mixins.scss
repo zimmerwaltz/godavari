@@ -1,0 +1,91 @@
+//mixins file
+
+
+@mixin field-card-overlay($from:rgba(72,76,97,$fromOpacity:0.2) 0%,$to:rgba(72,76,97,$toOpacity:0.8) 50%)  {
+    background-image: linear-gradient(-180deg, $from, $to);
+    position: absolute;
+    content: "";
+    width:100%;
+    height: 100%;
+    transform: translateX(100%);
+    left: 0;
+    transition: all 0.2s;
+}
+
+ @mixin underline {
+    content: "";
+    display: block;
+    width: 30%;
+    height: 4px;
+    background-color: white;
+    transform: translateX(-50%);
+    opacity:0;
+    transition:all 0.2s;
+}
+
+
+@mixin mu-title{
+    text-transform: uppercase;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size:2rem;
+    z-index: 999;
+    transform: translateX(50%);
+    opacity: 0;
+    transition: all 0.2s;
+    display: block;
+}
+
+@mixin field-card{
+    min-height: 360px;
+    padding: 0;
+    transition:all 0.5s;
+    overflow: hidden;
+    cursor: pointer;
+    &:hover .field-card-child::after{
+        transform: translateX(0);
+    }
+}
+
+@mixin field-card-child{
+    min-height: inherit;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    padding:0 2rem;
+    background-size: cover;
+    background-position: center center;
+}
+
+@mixin link-styling($color){
+    color:$color;
+    &:hover{
+        color:darken($color,10%);
+        text-decoration: none;
+    }
+}
+
+@mixin button($color){
+    background-color:$color;
+    text-transform: uppercase;
+    padding: 0.8rem 3rem;
+    color:white;
+    font-weight: 500;
+    border-radius:2rem;
+    
+    &:hover{
+        background: darken($color,10%);
+    }
+}
+
+@mixin menu-button(){
+    padding: 0.5rem 1rem;
+    border-radius:100px;
+    right:2rem;
+    top:2rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+}

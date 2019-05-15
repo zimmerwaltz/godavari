@@ -1,0 +1,35 @@
+{
+  "name": "godavari",
+  "version": "1.0.0",
+  "description": "Implementing Godavari UI which was built in Sketch using Bootstrap 4 framework with help from Sympli",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.24.7",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-cache": "^1.0.2",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify-es": "^1.0.4",
+    "gulp-useref": "^3.1.5",
+    "natives": "^1.1.6",
+    "run-sequence": "^2.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bootstrap4",
+    "gulp",
+    "sass"
+  ],
+  "author": "Zubin Charles",
+  "license": "ISC"
+}
